@@ -92,7 +92,9 @@ namespace Textures
 	{
 		Landscape,
 		Airplane,
-		Missile
+		Missile,
+		Eagle,
+		Raptor
 	};
 }
 using TextureHolder = ResourceHolder<sf::Texture, Textures::ID>;
