@@ -5,8 +5,7 @@ const sf::Time Game::TimePerFrame = sf::seconds(1.f / 60.f);
 
 Game::Game()
 	: _window{sf::VideoMode(640u, 480u), "SFML GAME"},
-	  _texture{},
-	  _player{}
+	  _world{_window}
 {
 }
 
@@ -18,10 +17,12 @@ void Game::run()
 	while(_window.isOpen())
 	{
 		processEvents();
-		timeSinceLastUpdate += clock.restart();
+		auto elapsedTime = clock.restart();
+		timeSinceLastUpdate += elapsedTime;
 		while (timeSinceLastUpdate > TimePerFrame)
 		{
 			timeSinceLastUpdate -= TimePerFrame;
+
 			processEvents();
 			update(TimePerFrame);
 		}
@@ -50,49 +51,26 @@ void Game::processEvents()
 	}
 }
 
-void Game::update(sf::Time deltaTime)
+void Game::update(sf::Time elapsedTime)
 {
-	sf::Vector2f movement{ 0.f,0.f };
-	if (_isMovingUp) {
-		movement.y -= PlayerSpeed;
-	}
-	if (_isMovingDown) {
-		movement.y += PlayerSpeed;
-	}
-	if (_isMovingLeft) {
-		movement.x -= PlayerSpeed;
-	}
-	if (_isMovingRight) {
-		movement.x += PlayerSpeed;
-	}
-
-	_player.move(movement * deltaTime.asSeconds());
+	_world.update(elapsedTime);
 }
 
 void Game::render()
 {
 	_window.clear();
-	_window.draw(_player);
+	_world.draw();
+
+	_window.setView(_window.getDefaultView());
+
 	_window.display();
+}
+
+void Game::updateStatistics(sf::Time elapsedTime)
+{
+
 }
 
 void Game::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 {
-	switch (key)
-	{
-	case sf::Keyboard::W:
-		_isMovingUp = isPressed;
-		break;
-	case sf::Keyboard::S:
-		_isMovingDown = isPressed;
-		break;
-	case sf::Keyboard::A:
-		_isMovingLeft = isPressed;
-		break;
-	case sf::Keyboard::D:
-		_isMovingRight = isPressed;
-		break;
-	default: 
-		break;
-	}
 }

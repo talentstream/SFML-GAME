@@ -1,6 +1,6 @@
 #pragma once
 
-#include <array>
+#include <unordered_map>
 
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
@@ -10,7 +10,8 @@
 #include "sceneNode.h"
 
 
-class World : private sf::NonCopyable
+class World :
+	private sf::NonCopyable
 {
 public:
 	explicit World(sf::RenderWindow& window);
@@ -24,8 +25,7 @@ private:
 
 	void buildScene();
 
-private:
-	enum class Layer
+	enum class Layer : std::size_t
 	{
 		Background,
 		Air,
@@ -37,12 +37,10 @@ private:
 	TextureHolder _textureHolder;
 
 	SceneNode _sceneGraph;
-	std::array<SceneNode*, static_cast<size_t>(Layer::Count)> _SceneLayers;
+	std::unordered_map<Layer, SceneNode*> _sceneLayers;
 
 	sf::FloatRect _worldBounds;
 	sf::Vector2f _spawnPosition;
 	float _scrollSpeed;
 	Aircraft* _playerAircraft;
-
 };
-

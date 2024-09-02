@@ -8,10 +8,11 @@
 
 #include <SFML/Graphics/Texture.hpp>
 
-template<typename Resource, typename Identifier>
+template <typename Resource, typename Identifier>
 class ResourceHolder
 {
 	using ResourcePtr = std::unique_ptr<Resource>;
+
 public:
 	ResourceHolder() = default;
 
@@ -19,7 +20,7 @@ public:
 
 	void load(Identifier id, std::string_view filename);
 
-	template<typename  Parameter>
+	template <typename Parameter>
 	void load(Identifier id, std::string_view filename, const Parameter& parameter);
 
 	Resource& get(Identifier id);
@@ -29,7 +30,6 @@ public:
 private:
 	void insertResource(Identifier id, ResourcePtr resource);
 
-private:
 	std::map<Identifier, ResourcePtr> _resourceMap;
 };
 
@@ -38,7 +38,7 @@ void ResourceHolder<Resource, Identifier>::load(Identifier id, std::string_view 
 {
 	auto resource = std::make_unique<Resource>();
 
-	if(!resource->loadFromFile(filename))
+	if (!resource->loadFromFile(filename.data()))
 	{
 		throw std::runtime_error("ResourceHolder::load - Failed to load " + std::string(filename));
 	}
@@ -52,9 +52,9 @@ void ResourceHolder<Resource, Identifier>::load(Identifier id, std::string_view 
 {
 	auto resource = std::make_unique<Resource>();
 
-	if(!resource->loadFromFile(filename, parameter))
+	if (!resource->loadFromFile(filename, parameter))
 	{
-				throw std::runtime_error("ResourceHolder::load - Failed to load " + std::string(filename));
+		throw std::runtime_error("ResourceHolder::load - Failed to load " + std::string(filename));
 	}
 
 	insertResource(id, std::move(resource));
@@ -94,7 +94,9 @@ namespace Textures
 		Airplane,
 		Missile,
 		Eagle,
-		Raptor
+		Raptor,
+		Desert
 	};
 }
+
 using TextureHolder = ResourceHolder<sf::Texture, Textures::ID>;

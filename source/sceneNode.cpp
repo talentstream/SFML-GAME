@@ -1,5 +1,7 @@
 #include "sceneNode.h"
 
+#include <cassert>
+
 SceneNode::SceneNode()
 	: _children{},
 	  _parent{nullptr}
@@ -19,7 +21,7 @@ SceneNode::NodePtr SceneNode::detachChild(const SceneNode& node)
 		return p.get() == &node;
 	});
 
-	static_assert(found != _children.end());
+	assert(found != _children.end());
 
 	NodePtr result = std::move(*found);
 	result->_parent = nullptr;

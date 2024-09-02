@@ -137,19 +137,22 @@
     <ClCompile Include="source\entity.cpp" />
     <ClCompile Include="source\game.cpp" />
     <ClCompile Include="source\main.cpp" />
-    <ClCompile Include="world.cpp" />
+    <ClCompile Include="source\world.cpp" />
+    <ClCompile Include="source\spriteNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\aircraft.h" />
     <ClInclude Include="header\entity.h" />
     <ClInclude Include="header\game.h" />
     <ClInclude Include="header\resourceHolder.h" />
-    <ClInclude Include="resourceHolder.h" />
     <ClInclude Include="header\sceneNode.h" />
-    <ClInclude Include="world.h" />
+    <ClInclude Include="header\world.h" />
+    <ClInclude Include="header\spriteNode.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="resource\eagle.png" />
+    <Image Include="resource\Desert.png" />
+    <Image Include="resource\Eagle.png" />
+    <Image Include="resource\Raptor.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

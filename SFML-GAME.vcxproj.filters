@@ -30,14 +30,14 @@
     <ClCompile Include="source\sceneNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="world.cpp">
+    <ClCompile Include="source\world.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\spriteNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="resourceHolder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="header\game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -53,12 +53,21 @@
     <ClInclude Include="header\sceneNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="world.h">
+    <ClInclude Include="header\world.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\spriteNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="resource\eagle.png">
+    <Image Include="resource\Eagle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resource\Desert.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resource\Raptor.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

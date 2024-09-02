@@ -4,6 +4,7 @@
 #include <memory>
 
 #include "resourceHolder.h"
+#include "world.h"
 
 class Game
 {
@@ -15,9 +16,11 @@ public:
 private:
 	void processEvents();
 
-	void update(sf::Time deltaTime);
+	void update(sf::Time elapsedTime);
 
 	void render();
+
+	void updateStatistics(sf::Time elapsedTime);
 
 	void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
 
@@ -27,8 +30,7 @@ private:
 
 	std::unique_ptr<TextureHolder> _textureHolder;
 	sf::RenderWindow _window;
-	sf::Texture _texture;
-	sf::Sprite _player;
+	World _world;
 
 	bool _isMovingUp{ false };
 	bool _isMovingDown{ false };
