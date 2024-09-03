@@ -67,6 +67,7 @@ void SceneNode::updateChildren(sf::Time dt)
 void SceneNode::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();
+
 	drawCurrent(target, states);
 	drawChildren(target, states);
 }

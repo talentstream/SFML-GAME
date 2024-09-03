@@ -25,16 +25,15 @@ private:
 	void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
 
 private:
-	static const float PlayerSpeed;
+	// static const float PlayerSpeed;
 	static const sf::Time TimePerFrame;
 
-	std::unique_ptr<TextureHolder> _textureHolder;
 	sf::RenderWindow _window;
 	World _world;
-
-	bool _isMovingUp{ false };
-	bool _isMovingDown{ false };
-	bool _isMovingLeft{ false };
-	bool _isMovingRight{ false };
+	//
+	// bool _isMovingUp{ false };
+	// bool _isMovingDown{ false };
+	// bool _isMovingLeft{ false };
+	// bool _isMovingRight{ false };
 };
 

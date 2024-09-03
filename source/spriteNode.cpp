@@ -1,10 +1,12 @@
 #include "spriteNode.h"
 
-SpriteNode::SpriteNode(const sf::Texture& texture)
+SpriteNode::SpriteNode(const sf::Texture& texture) :
+	_sprite{texture}
 {
 }
 
-SpriteNode::SpriteNode(const sf::Texture& texture, const sf::IntRect& textureRect)
+SpriteNode::SpriteNode(const sf::Texture& texture, const sf::IntRect& textureRect):
+	_sprite{texture, textureRect}
 {
 }
 

@@ -21,6 +21,7 @@ World::World(sf::RenderWindow& window) :
 
 void World::update(sf::Time dt)
 {
+
 	_worldView.move(0.f, _scrollSpeed * dt.asSeconds());
 
 	auto position = _playerAircraft->getPosition();
@@ -38,6 +39,7 @@ void World::update(sf::Time dt)
 
 void World::draw()
 {
+
 	_window.setView(_worldView);
 	_window.draw(_sceneGraph);
 }
@@ -58,11 +60,10 @@ void World::buildScene()
 		_sceneGraph.attachChild(std::move(layer));
 	}
 
-	auto texture = _textureHolder.get(Textures::ID::Desert);
-	sf::IntRect textureRect(_worldBounds);
+	auto& texture = _textureHolder.get(Textures::ID::Desert);
+	sf::IntRect textureRect{ _worldBounds };
 	texture.setRepeated(true);
-
-	// Todo : no desert
+	
 	auto backgroundSprite = std::make_unique<SpriteNode>(texture, textureRect);
 	backgroundSprite->setPosition(_worldBounds.left, _worldBounds.top);
 	_sceneLayers[Layer::Background]->attachChild(std::move(backgroundSprite));

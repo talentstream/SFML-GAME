@@ -1,6 +1,6 @@
 #include "game.h"
 
-constexpr float Game::PlayerSpeed = 100.f;
+// constexpr float Game::PlayerSpeed = 100.f;
 const sf::Time Game::TimePerFrame = sf::seconds(1.f / 60.f);
 
 Game::Game()
@@ -17,8 +17,10 @@ void Game::run()
 	while(_window.isOpen())
 	{
 		processEvents();
+
 		auto elapsedTime = clock.restart();
 		timeSinceLastUpdate += elapsedTime;
+
 		while (timeSinceLastUpdate > TimePerFrame)
 		{
 			timeSinceLastUpdate -= TimePerFrame;
@@ -32,6 +34,7 @@ void Game::run()
 
 void Game::processEvents()
 {
+
 	for (auto event = sf::Event{}; _window.pollEvent(event);)
 	{
 		switch (event.type)
