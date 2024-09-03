@@ -154,6 +154,9 @@
     <Image Include="resource\Eagle.png" />
     <Image Include="resource\Raptor.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="resource\Sansation.ttf" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

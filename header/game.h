@@ -30,6 +30,11 @@ private:
 
 	sf::RenderWindow _window;
 	World _world;
+
+	sf::Font _font;
+	sf::Text _statisticsText;
+	sf::Time _statisticsUpdateTime;
+	std::size_t _statisticsNumFrames{0};
 	//
 	// bool _isMovingUp{ false };
 	// bool _isMovingDown{ false };
