@@ -21,27 +21,27 @@ World::World(sf::RenderWindow& window) :
 
 void World::update(sf::Time dt)
 {
-
 	_worldView.move(0.f, _scrollSpeed * dt.asSeconds());
+	_playerAircraft->setVelocity(0.f, 0.f);
 
-	auto position = _playerAircraft->getPosition();
-	auto velocity = _playerAircraft->getVelocity();
-
-	if (position.x <= _worldBounds.left + 150.f ||
-		position.x >= _worldBounds.left + _worldBounds.width - 150.f)
+	while(_commandQueue.isEmpty() == false)
 	{
-		velocity.x = -velocity.x;
-		_playerAircraft->setVelocity(velocity);
+		_sceneGraph.onCommand(_commandQueue.pop(), dt);
 	}
+	adaptPlayerVelocity();
 
 	_sceneGraph.update(dt);
 }
 
 void World::draw()
 {
-
 	_window.setView(_worldView);
 	_window.draw(_sceneGraph);
+}
+
+CommandQueue& World::getCommandQueue()
+{
+	return _commandQueue;
 }
 
 void World::loadTextures()
@@ -61,9 +61,9 @@ void World::buildScene()
 	}
 
 	auto& texture = _textureHolder.get(Textures::ID::Desert);
-	sf::IntRect textureRect{ _worldBounds };
+	sf::IntRect textureRect{_worldBounds};
 	texture.setRepeated(true);
-	
+
 	auto backgroundSprite = std::make_unique<SpriteNode>(texture, textureRect);
 	backgroundSprite->setPosition(_worldBounds.left, _worldBounds.top);
 	_sceneLayers[Layer::Background]->attachChild(std::move(backgroundSprite));
@@ -81,4 +81,31 @@ void World::buildScene()
 	auto rightEscort = std::make_unique<Aircraft>(Aircraft::Type::Raptor, _textureHolder);
 	rightEscort->setPosition(80.f, 50.f);
 	_playerAircraft->attachChild(std::move(rightEscort));
+}
+
+void World::adaptPlayerPosition() const
+{
+	sf::FloatRect viewBounds{_worldView.getCenter() - _worldView.getSize() / 2.f, _worldView.getSize()};
+	constexpr float borderDistance = 40.f;
+
+	sf::Vector2f position = _playerAircraft->getPosition();
+	position.x = std::max(position.x, viewBounds.left + borderDistance);
+	position.x = std::min(position.x, viewBounds.left + viewBounds.width - borderDistance);
+	position.y = std::max(position.y, viewBounds.top + borderDistance);
+	position.y = std::min(position.y, viewBounds.top + viewBounds.height - borderDistance);
+	_playerAircraft->setPosition(position);
+
+}
+
+void World::adaptPlayerVelocity()
+{
+	auto velocity = _playerAircraft->getVelocity();
+
+	if (velocity.x != 0.f && velocity.y != 0.f)
+	{
+		_playerAircraft->setVelocity(velocity / std::sqrt(2.f));
+	}
+
+	_playerAircraft->accelerate(0.f, -_scrollSpeed);
+
 }

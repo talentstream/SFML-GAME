@@ -132,6 +132,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\player.cpp" />
+    <ClCompile Include="source\commandQueue.cpp" />
     <ClCompile Include="source\sceneNode.cpp" />
     <ClCompile Include="source\aircraft.cpp" />
     <ClCompile Include="source\entity.cpp" />
@@ -141,13 +143,16 @@
     <ClCompile Include="source\spriteNode.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="header\commandQueue.h" />
     <ClInclude Include="header\aircraft.h" />
+    <ClInclude Include="header\command.h" />
     <ClInclude Include="header\entity.h" />
     <ClInclude Include="header\game.h" />
     <ClInclude Include="header\resourceHolder.h" />
     <ClInclude Include="header\sceneNode.h" />
     <ClInclude Include="header\world.h" />
     <ClInclude Include="header\spriteNode.h" />
+    <ClInclude Include="header\player.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resource\Desert.png" />

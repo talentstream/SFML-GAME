@@ -52,13 +52,31 @@ sf::Transform SceneNode::getWorldTransform() const
 	return transform;
 }
 
+void SceneNode::onCommand(const Command& command, sf::Time dt)
+{
+	if(command._category == getCategory())
+	{
+		command._action(*this, dt);
+	}
+
+	for (const auto& child : _children)
+	{
+		child->onCommand(command, dt);
+	}
+}
+
+Category SceneNode::getCategory() const
+{
+	return Category::Scene;
+}
+
 void SceneNode::updateCurrent(sf::Time dt)
 {
 }
 
-void SceneNode::updateChildren(sf::Time dt)
+void SceneNode::updateChildren(sf::Time dt) const
 {
-	for (auto& child : _children)
+	for (const auto& child : _children)
 	{
 		child->update(dt);
 	}

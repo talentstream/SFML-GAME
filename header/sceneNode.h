@@ -1,5 +1,7 @@
 #pragma once
 
+#include "command.h"
+
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 
@@ -27,10 +29,14 @@ public:
 
 	sf::Transform getWorldTransform() const;
 
+	void onCommand(const Command& command, sf::Time dt);
+
+	virtual Category getCategory() const;
+
 private:
 	virtual void updateCurrent(sf::Time dt);
 
-	void updateChildren(sf::Time dt);
+	void updateChildren(sf::Time dt) const;
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 

@@ -8,7 +8,7 @@
 #include "aircraft.h"
 #include "resourceHolder.h"
 #include "sceneNode.h"
-
+#include "commandQueue.h"
 
 class World :
 	private sf::NonCopyable
@@ -20,10 +20,14 @@ public:
 
 	void draw();
 
+	CommandQueue& getCommandQueue();
+
 private:
 	void loadTextures();
 
 	void buildScene();
+	void adaptPlayerPosition() const;
+	void adaptPlayerVelocity();
 
 	enum class Layer : std::size_t
 	{
@@ -38,6 +42,7 @@ private:
 
 	SceneNode _sceneGraph;
 	std::unordered_map<Layer, SceneNode*> _sceneLayers;
+	CommandQueue _commandQueue;
 
 	sf::FloatRect _worldBounds;
 	sf::Vector2f _spawnPosition;

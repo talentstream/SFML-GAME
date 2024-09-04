@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 
+#include "player.h"
 #include "resourceHolder.h"
 #include "world.h"
 
@@ -14,7 +15,7 @@ public:
 	void run();
 
 private:
-	void processEvents();
+	void processInput();
 
 	void update(sf::Time elapsedTime);
 
@@ -22,23 +23,17 @@ private:
 
 	void updateStatistics(sf::Time elapsedTime);
 
-	void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
-
 private:
 	// static const float PlayerSpeed;
 	static const sf::Time TimePerFrame;
 
 	sf::RenderWindow _window;
 	World _world;
+	Player _player;
 
 	sf::Font _font;
 	sf::Text _statisticsText;
 	sf::Time _statisticsUpdateTime;
 	std::size_t _statisticsNumFrames{0};
-	//
-	// bool _isMovingUp{ false };
-	// bool _isMovingDown{ false };
-	// bool _isMovingLeft{ false };
-	// bool _isMovingRight{ false };
 };
 
