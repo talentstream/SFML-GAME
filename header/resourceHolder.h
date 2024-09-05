@@ -7,6 +7,7 @@
 #include <map>
 
 #include <SFML/Graphics/Texture.hpp>
+#include <SFML/Graphics/Font.hpp>
 
 template <typename Resource, typename Identifier>
 class ResourceHolder
@@ -100,3 +101,13 @@ namespace Textures
 }
 
 using TextureHolder = ResourceHolder<sf::Texture, Textures::ID>;
+
+namespace Fonts
+{
+	enum class ID
+	{
+		Main
+	};
+}
+
+using FontHolder = ResourceHolder<sf::Font, Fonts::ID>;

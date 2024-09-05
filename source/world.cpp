@@ -53,7 +53,9 @@ void World::loadTextures()
 
 void World::buildScene()
 {
-	for (auto i = 0; i < static_cast<size_t>(Layer::Count); i++)
+
+
+	for (auto i = 0; i < std::to_underlying(Layer::Count); i++)
 	{
 		auto layer = std::make_unique<SceneNode>();
 		_sceneLayers[static_cast<Layer>(i)] = layer.get();

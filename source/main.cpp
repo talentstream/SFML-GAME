@@ -1,13 +1,13 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "game.h"
+#include "common/application.h"
 
 int main()
 {
     try
     {
-        Game game;
-        game.run();
+        Application application;
+        application.run();
     }
     catch (const std::exception& e)
     {

@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\game.cpp">
+    <ClCompile Include="source\application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\main.cpp">
@@ -42,9 +42,15 @@
     <ClCompile Include="source\player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\common\state.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\common\stateStack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="header\game.h">
+    <ClInclude Include="header\common\application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\resourceHolder.h">
@@ -72,6 +78,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\common\state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\common\stateStack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

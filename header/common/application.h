@@ -5,12 +5,13 @@
 
 #include "player.h"
 #include "resourceHolder.h"
+#include "stateStack.h"
 #include "world.h"
 
-class Game
+class Application
 {
 public:
-	Game();
+	Application();
 
 	void run();
 
@@ -23,6 +24,8 @@ private:
 
 	void updateStatistics(sf::Time elapsedTime);
 
+	void registerState();
+
 private:
 	// static const float PlayerSpeed;
 	static const sf::Time TimePerFrame;
@@ -30,8 +33,13 @@ private:
 	sf::RenderWindow _window;
 	World _world;
 	Player _player;
+	TextureHolder _textureHolder;
+	FontHolder _fontHolder;
+
+	StateStack _stateStack;
 
 	sf::Font _font;
+
 	sf::Text _statisticsText;
 	sf::Time _statisticsUpdateTime;
 	std::size_t _statisticsNumFrames{0};
