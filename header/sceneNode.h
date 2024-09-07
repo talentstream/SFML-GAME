@@ -1,6 +1,6 @@
 #pragma once
 
-#include "command.h"
+#include "common/command.h"
 
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>

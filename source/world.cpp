@@ -46,9 +46,9 @@ CommandQueue& World::getCommandQueue()
 
 void World::loadTextures()
 {
-	_textureHolder.load(Textures::ID::Eagle, "resource/Eagle.png");
-	_textureHolder.load(Textures::ID::Raptor, "resource/Raptor.png");
-	_textureHolder.load(Textures::ID::Desert, "resource/Desert.png");
+	_textureHolder.load(TextureID::Eagle, "resource/Eagle.png");
+	_textureHolder.load(TextureID::Raptor, "resource/Raptor.png");
+	_textureHolder.load(TextureID::Desert, "resource/Desert.png");
 }
 
 void World::buildScene()
@@ -62,7 +62,7 @@ void World::buildScene()
 		_sceneGraph.attachChild(std::move(layer));
 	}
 
-	auto& texture = _textureHolder.get(Textures::ID::Desert);
+	auto& texture = _textureHolder.get(TextureID::Desert);
 	sf::IntRect textureRect{_worldBounds};
 	texture.setRepeated(true);
 

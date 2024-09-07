@@ -6,9 +6,9 @@
 #include <SFML/Graphics.hpp>
 
 #include "aircraft.h"
-#include "resourceHolder.h"
+#include "common/resourceHolder.h"
 #include "sceneNode.h"
-#include "commandQueue.h"
+#include "common/commandQueue.h"
 
 class World :
 	private sf::NonCopyable

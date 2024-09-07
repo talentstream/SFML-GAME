@@ -1,6 +1,10 @@
 #include "common/application.h"
 
 #include "common/state.h"
+#include "state/titleState.h"
+#include "state/gameState.h"
+#include "state/pauseState.h"
+#include "state/menuState.h"
 
 // constexpr float Application::PlayerSpeed = 100.f;
 const sf::Time Application::TimePerFrame = sf::seconds(1.f / 60.f);
@@ -12,17 +16,20 @@ Application::Application()
 	  _textureHolder{},
 	  _fontHolder{},
 	  _stateStack{State::Context{_window, _textureHolder, _fontHolder, _player}},
-	  _font{},
 	  _statisticsText{},
 	  _statisticsUpdateTime{}
 {
 	_window.setKeyRepeatEnabled(false);
 
+	_fontHolder.load(FontID::Main,"resource/Sansation.ttf");
+	_textureHolder.load(TextureID::TitleScreen, "resource/TitleScreen.png");
 
-	_font.loadFromFile("resource/Sansation.ttf");
-	_statisticsText.setFont(_font);
+	_statisticsText.setFont(_fontHolder.get(FontID::Main));
 	_statisticsText.setPosition(5.f, 5.f);
 	_statisticsText.setCharacterSize(10u);
+
+	registerState();
+	_stateStack.pushState(StateID::Title);
 }
 
 void Application::run()
@@ -34,8 +41,8 @@ void Application::run()
 	{
 		processInput();
 
-		auto elapsedTime = clock.restart();
-		timeSinceLastUpdate += elapsedTime;
+		auto dt = clock.restart();
+		timeSinceLastUpdate += dt;
 
 		while (timeSinceLastUpdate > TimePerFrame)
 		{
@@ -43,55 +50,54 @@ void Application::run()
 
 			processInput();
 			update(TimePerFrame);
+
+			if(_stateStack.isEmpty())
+			{
+				_window.close();
+			}
 		}
-		updateStatistics(elapsedTime);
+		updateStatistics(dt);
 		render();
 	}
 }
 
 void Application::processInput()
 {
-	auto& commandQueue = _world.getCommandQueue();
-
 	for (auto event = sf::Event{}; _window.pollEvent(event);)
 	{
-		_player.handleEvent(event, commandQueue);
+		_stateStack.handleEvent(event);
 
 		if (event.type == sf::Event::Closed)
 		{
 			_window.close();
 		}
 	}
-
-	_player.handleRealtimeInput(commandQueue);
 }
 
-void Application::update(sf::Time elapsedTime)
+void Application::update(sf::Time dt)
 {
-	_world.update(elapsedTime);
+	_stateStack.update(dt);
 }
 
 void Application::render()
 {
 	_window.clear();
-	_world.draw();
+
+	_stateStack.draw();
 
 	_window.setView(_window.getDefaultView());
 	_window.draw(_statisticsText);
 	_window.display();
 }
 
-void Application::updateStatistics(sf::Time elapsedTime)
+void Application::updateStatistics(sf::Time dt)
 {
-	_statisticsUpdateTime += elapsedTime;
+	_statisticsUpdateTime += dt;
 	_statisticsNumFrames += 1;
 
 	if (_statisticsUpdateTime >= sf::seconds(1.0f))
 	{
-		_statisticsText.setString(
-			"Frames / Second = " + std::to_string(_statisticsNumFrames) + "\n" +
-			"Time / Update = " + std::to_string(_statisticsUpdateTime.asMicroseconds() / _statisticsNumFrames) + "us"
-		);
+		_statisticsText.setString("FPS: " + std::to_string(_statisticsNumFrames));
 
 		_statisticsUpdateTime -= sf::seconds(1.0f);
 		_statisticsNumFrames = 0;
@@ -100,4 +106,8 @@ void Application::updateStatistics(sf::Time elapsedTime)
 
 void Application::registerState()
 {
+	_stateStack.registerState<TitleState>(StateID::Title);
+	_stateStack.registerState<MenuState>(StateID::Menu);
+	_stateStack.registerState<GameState>(StateID::Game);
+	_stateStack.registerState<PauseState>(StateID::Pause);
 }

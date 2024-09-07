@@ -1,6 +1,6 @@
 #pragma once
 
-#include "commandQueue.h"
+#include "common/commandQueue.h"
 
 #include <SFML/Window/Event.hpp>
 

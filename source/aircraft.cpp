@@ -1,15 +1,15 @@
 #include "aircraft.h"
 
-Textures::ID toTextureID(Aircraft::Type type)
+TextureID toTextureID(Aircraft::Type type)
 {
 	switch (type)
 	{
 	case Aircraft::Type::Eagle:
-		return Textures::ID::Eagle;
+		return TextureID::Eagle;
 	case Aircraft::Type::Raptor:
-		return Textures::ID::Raptor;
+		return TextureID::Raptor;
 	default:
-		return Textures::ID::Eagle;
+		return TextureID::Eagle;
 	}
 }
 

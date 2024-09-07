@@ -8,8 +8,7 @@
 
 #include "common/state.h"
 
-class StateStack :
-	sf::NonCopyable
+class StateStack : private sf::NonCopyable
 {
 public:
 	enum class Action

@@ -87,27 +87,19 @@ void ResourceHolder<Resource, Identifier>::insertResource(Identifier id, Resourc
 }
 
 
-namespace Textures
+enum class TextureID
 {
-	enum class ID
-	{
-		Landscape,
-		Airplane,
-		Missile,
-		Eagle,
-		Raptor,
-		Desert
-	};
-}
+	Eagle,
+	Raptor,
+	Desert,
+	TitleScreen,
+};
 
-using TextureHolder = ResourceHolder<sf::Texture, Textures::ID>;
+using TextureHolder = ResourceHolder<sf::Texture, TextureID>;
 
-namespace Fonts
+enum class FontID
 {
-	enum class ID
-	{
-		Main
-	};
-}
+	Main
+};
 
-using FontHolder = ResourceHolder<sf::Font, Fonts::ID>;
+using FontHolder = ResourceHolder<sf::Font, FontID>;

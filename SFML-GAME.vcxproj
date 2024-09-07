@@ -132,36 +132,51 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\common\parellelTask.cpp" />
+    <ClCompile Include="source\state\loadingState.cpp" />
+    <ClCompile Include="source\state\pauseState.cpp" />
+    <ClCompile Include="source\state\menuState.cpp" />
+    <ClCompile Include="source\state\gameState.cpp" />
     <ClCompile Include="source\player.cpp" />
-    <ClCompile Include="source\commandQueue.cpp" />
+    <ClCompile Include="source\common\commandQueue.cpp" />
     <ClCompile Include="source\sceneNode.cpp" />
     <ClCompile Include="source\aircraft.cpp" />
     <ClCompile Include="source\entity.cpp" />
-    <ClCompile Include="source\application.cpp" />
+    <ClCompile Include="source\common\application.cpp" />
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\common\utility.cpp" />
     <ClCompile Include="source\world.cpp" />
     <ClCompile Include="source\spriteNode.cpp" />
     <ClCompile Include="source\common\state.cpp" />
     <ClCompile Include="source\common\stateStack.cpp" />
+    <ClCompile Include="source\state\titleState.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="header\commandQueue.h" />
+    <ClInclude Include="header\state\gameState.h" />
+    <ClInclude Include="header\common\commandQueue.h" />
     <ClInclude Include="header\aircraft.h" />
-    <ClInclude Include="header\command.h" />
+    <ClInclude Include="header\common\command.h" />
     <ClInclude Include="header\entity.h" />
     <ClInclude Include="header\common\application.h" />
-    <ClInclude Include="header\resourceHolder.h" />
+    <ClInclude Include="header\common\resourceHolder.h" />
     <ClInclude Include="header\sceneNode.h" />
+    <ClInclude Include="header\common\utility.h" />
     <ClInclude Include="header\world.h" />
     <ClInclude Include="header\spriteNode.h" />
     <ClInclude Include="header\player.h" />
     <ClInclude Include="header\common\state.h" />
     <ClInclude Include="header\common\stateStack.h" />
+    <ClInclude Include="header\state\titleState.h" />
+    <ClInclude Include="header\state\menuState.h" />
+    <ClInclude Include="header\state\pauseState.h" />
+    <ClInclude Include="header\state\loadingState.h" />
+    <ClInclude Include="header\common\parellelTask.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resource\Desert.png" />
     <Image Include="resource\Eagle.png" />
     <Image Include="resource\Raptor.png" />
+    <Image Include="resource\TitleScreen.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="resource\Sansation.ttf" />

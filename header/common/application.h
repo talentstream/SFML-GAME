@@ -18,11 +18,11 @@ public:
 private:
 	void processInput();
 
-	void update(sf::Time elapsedTime);
+	void update(sf::Time dt);
 
 	void render();
 
-	void updateStatistics(sf::Time elapsedTime);
+	void updateStatistics(sf::Time dt);
 
 	void registerState();
 
@@ -37,8 +37,6 @@ private:
 	FontHolder _fontHolder;
 
 	StateStack _stateStack;
-
-	sf::Font _font;
 
 	sf::Text _statisticsText;
 	sf::Time _statisticsUpdateTime;

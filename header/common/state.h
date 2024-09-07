@@ -13,6 +13,11 @@ class StateStack;
 enum class StateID
 {
 	None,
+	Title,
+	Menu,
+	Game,
+	Loading,
+	Pause
 };
 
 class State
@@ -38,7 +43,7 @@ public:
 
 	State(StateStack& stack, Context context);
 
-	virtual ~State();
+	virtual ~State() = default;
 
 	virtual void draw() = 0;
 
@@ -56,7 +61,7 @@ protected:
 	Context getContext() const;
 
 private:
-	std::weak_ptr<StateStack> _stack;
+	StateStack* _stack;
 
 	Context _context;
 };

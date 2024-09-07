@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\application.cpp">
+    <ClCompile Include="source\common\application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\main.cpp">
@@ -36,7 +36,7 @@
     <ClCompile Include="source\spriteNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\commandQueue.cpp">
+    <ClCompile Include="source\common\commandQueue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\player.cpp">
@@ -48,12 +48,33 @@
     <ClCompile Include="source\common\stateStack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\state\gameState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\state\titleState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\common\utility.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\state\menuState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\state\pauseState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\state\loadingState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\common\parellelTask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\common\application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\resourceHolder.h">
+    <ClInclude Include="header\common\resourceHolder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\entity.h">
@@ -71,10 +92,10 @@
     <ClInclude Include="header\spriteNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\command.h">
+    <ClInclude Include="header\common\command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\commandQueue.h">
+    <ClInclude Include="header\common\commandQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\player.h">
@@ -86,6 +107,27 @@
     <ClInclude Include="header\common\stateStack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="header\state\gameState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\state\titleState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\common\utility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\state\menuState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\state\pauseState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\state\loadingState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\common\parellelTask.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resource\Eagle.png">
@@ -95,6 +137,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="resource\Raptor.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resource\TitleScreen.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

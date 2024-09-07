@@ -1,7 +1,7 @@
 #pragma once
 
 #include "entity.h"
-#include "resourceHolder.h"
+#include "common/resourceHolder.h"
 
 
 class Aircraft :
