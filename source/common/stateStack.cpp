@@ -13,7 +13,7 @@ StateStack::StateStack(State::Context context)
 
 void StateStack::update(sf::Time dt)
 {
-	auto it = std::ranges::find_if(_stack, [dt](const auto& state)
+	auto it = std::ranges::find_if(_stack | std::views::reverse, [dt](const auto& state)
 	{
 		return !state->update(dt);
 	});
@@ -31,7 +31,7 @@ void StateStack::draw()
 
 void StateStack::handleEvent(const sf::Event& event)
 {
-	auto it = std::ranges::find_if(_stack, [event](const auto& state)
+	auto it = std::ranges::find_if(_stack | std::views::reverse, [event](const auto& state)
 	{
 		return !state->handleEvent(event);
 	});
