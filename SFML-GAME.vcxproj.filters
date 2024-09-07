@@ -69,6 +69,18 @@
     <ClCompile Include="source\common\parellelTask.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\common\component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\gui\container.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\gui\label.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\gui\button.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\common\application.h">
@@ -126,6 +138,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\common\parellelTask.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\common\component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\gui\container.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\gui\label.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\gui\button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -132,6 +132,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\gui\button.cpp" />
+    <ClCompile Include="source\gui\label.cpp" />
+    <ClCompile Include="source\gui\container.cpp" />
+    <ClCompile Include="source\common\component.cpp" />
     <ClCompile Include="source\common\parellelTask.cpp" />
     <ClCompile Include="source\state\loadingState.cpp" />
     <ClCompile Include="source\state\pauseState.cpp" />
@@ -152,6 +156,9 @@
     <ClCompile Include="source\state\titleState.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="header\gui\button.h" />
+    <ClInclude Include="header\gui\container.h" />
+    <ClInclude Include="header\common\component.h" />
     <ClInclude Include="header\state\gameState.h" />
     <ClInclude Include="header\common\commandQueue.h" />
     <ClInclude Include="header\aircraft.h" />
@@ -171,6 +178,7 @@
     <ClInclude Include="header\state\pauseState.h" />
     <ClInclude Include="header\state\loadingState.h" />
     <ClInclude Include="header\common\parellelTask.h" />
+    <ClInclude Include="header\gui\label.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resource\Desert.png" />

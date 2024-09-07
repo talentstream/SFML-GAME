@@ -93,6 +93,9 @@ enum class TextureID
 	Raptor,
 	Desert,
 	TitleScreen,
+	ButtonNormal,
+	ButtonSelected,
+	ButtonPressed,
 };
 
 using TextureHolder = ResourceHolder<sf::Texture, TextureID>;
