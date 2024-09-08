@@ -5,6 +5,7 @@
 #include "state/gameState.h"
 #include "state/pauseState.h"
 #include "state/menuState.h"
+#include "state/settingsState.h"
 
 // constexpr float Application::PlayerSpeed = 100.f;
 const sf::Time Application::TimePerFrame = sf::seconds(1.f / 60.f);
@@ -23,6 +24,9 @@ Application::Application()
 
 	_fontHolder.load(FontID::Main,"resource/Sansation.ttf");
 	_textureHolder.load(TextureID::TitleScreen, "resource/TitleScreen.png");
+	_textureHolder.load(TextureID::ButtonNormal, "resource/ButtonNormal.png");
+	_textureHolder.load(TextureID::ButtonSelected, "resource/ButtonSelected.png");
+	_textureHolder.load(TextureID::ButtonPressed, "resource/ButtonPressed.png");
 
 	_statisticsText.setFont(_fontHolder.get(FontID::Main));
 	_statisticsText.setPosition(5.f, 5.f);
@@ -110,4 +114,5 @@ void Application::registerState()
 	_stateStack.registerState<MenuState>(StateID::Menu);
 	_stateStack.registerState<GameState>(StateID::Game);
 	_stateStack.registerState<PauseState>(StateID::Pause);
+	_stateStack.registerState<SettingsState>(StateID::Settings);
 }

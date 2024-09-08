@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "common/state.h"
+#include "gui/container.h"
 
 class MenuState final: public State
 {
@@ -18,18 +19,10 @@ public:
 
 	bool handleEvent(const sf::Event& event) override;
 
-	void updateOptionText();
-
 private:
-	enum class Option : std::size_t
-	{
-		Play,
-		Exit,
-	};
 
 	sf::Sprite _backgroundSprite;
-	std::vector<sf::Text> _options;
+	GUI::Container _container;
 
-	std::size_t _optionIndex;
 };
 

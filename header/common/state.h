@@ -17,7 +17,8 @@ enum class StateID
 	Menu,
 	Game,
 	Loading,
-	Pause
+	Pause,
+	Settings
 };
 
 class State

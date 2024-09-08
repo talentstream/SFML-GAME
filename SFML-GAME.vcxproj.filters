@@ -81,6 +81,9 @@
     <ClCompile Include="source\gui\button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\state\settingsState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\common\application.h">
@@ -152,6 +155,9 @@
     <ClInclude Include="header\gui\button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="header\state\settingsState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resource\Eagle.png">
@@ -164,6 +170,15 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="resource\TitleScreen.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resource\ButtonNormal.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resource\ButtonPressed.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resource\ButtonSelected.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

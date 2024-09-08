@@ -9,12 +9,13 @@
 class Player
 {
 public:
-	enum class Action
+	enum class Action : std::size_t
 	{
 		MoveLeft,
 		MoveRight,
 		MoveUp,
-		MoveDown
+		MoveDown,
+		Count
 	};
 
 	Player();

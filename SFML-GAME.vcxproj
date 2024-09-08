@@ -132,6 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\state\settingsState.cpp" />
     <ClCompile Include="source\gui\button.cpp" />
     <ClCompile Include="source\gui\label.cpp" />
     <ClCompile Include="source\gui\container.cpp" />
@@ -179,8 +180,12 @@
     <ClInclude Include="header\state\loadingState.h" />
     <ClInclude Include="header\common\parellelTask.h" />
     <ClInclude Include="header\gui\label.h" />
+    <ClInclude Include="header\state\settingsState.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="resource\ButtonNormal.png" />
+    <Image Include="resource\ButtonPressed.png" />
+    <Image Include="resource\ButtonSelected.png" />
     <Image Include="resource\Desert.png" />
     <Image Include="resource\Eagle.png" />
     <Image Include="resource\Raptor.png" />
