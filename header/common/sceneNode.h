@@ -8,6 +8,8 @@
 #include <memory>
 #include <vector>
 
+class CommandQueue;
+
 class SceneNode
 	:public sf::Transformable,
 	 public sf::Drawable,
@@ -17,13 +19,13 @@ public:
 	using NodePtr = std::unique_ptr<SceneNode>;
 
 public:
-	SceneNode();
+	explicit SceneNode(Category category = Category::None);
 
 	void attachChild(NodePtr child);
 
 	NodePtr detachChild(const SceneNode& node);
 
-	void update(sf::Time dt);
+	void update(sf::Time dt, CommandQueue& commandQueue);
 
 	sf::Vector2f getWorldPosition() const;
 
@@ -33,10 +35,16 @@ public:
 
 	virtual Category getCategory() const;
 
-private:
-	virtual void updateCurrent(sf::Time dt);
+	virtual sf::FloatRect getBoundingRect() const;
 
-	void updateChildren(sf::Time dt) const;
+	virtual bool isMarkedForRemoval() const;
+
+	virtual bool isDestroyed() const;
+
+private:
+	virtual void updateCurrent(sf::Time dt, CommandQueue& commandQueue);
+
+	void updateChildren(sf::Time dt, CommandQueue& commandQueue) const;
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
@@ -44,7 +52,10 @@ private:
 
 	void drawChildren(sf::RenderTarget& target, sf::RenderStates states) const;
 
+	void drawBoundingRect(sf::RenderTarget& target, sf::RenderStates states) const;
+
 private:
 	std::vector<NodePtr> _children;
 	SceneNode* _parent;
+	Category _defaultCategory;
 };

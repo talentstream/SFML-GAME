@@ -1,8 +1,7 @@
 #pragma once
-#include "sceneNode.h"
+#include "common/sceneNode.h"
 
-class SpriteNode :
-    public SceneNode
+class SpriteNode : public SceneNode
 {
 public:
     explicit SpriteNode(const sf::Texture& texture);

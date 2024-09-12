@@ -13,7 +13,10 @@ enum class Category
 	Scene,
 	PlayerAircraft,
 	AlliedAircraft,
-	EnemyAircraft
+	EnemyAircraft,
+	Pickup,
+	AlliedProjectile,
+	EnemyProjectile
 };
 
 class Command

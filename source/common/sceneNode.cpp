@@ -1,10 +1,11 @@
-#include "sceneNode.h"
+#include "common/sceneNode.h"
 
 #include <cassert>
 
-SceneNode::SceneNode()
-	: _children{},
-	  _parent{nullptr}
+SceneNode::SceneNode(Category category) :
+	_children{},
+	_parent{nullptr},
+	_defaultCategory{category}
 {
 }
 
@@ -29,10 +30,10 @@ SceneNode::NodePtr SceneNode::detachChild(const SceneNode& node)
 	return result;
 }
 
-void SceneNode::update(sf::Time dt)
+void SceneNode::update(sf::Time dt, CommandQueue& commandQueue)
 {
-	updateCurrent(dt);
-	updateChildren(dt);
+	updateCurrent(dt, commandQueue);
+	updateChildren(dt, commandQueue);
 }
 
 sf::Vector2f SceneNode::getWorldPosition() const
@@ -54,7 +55,7 @@ sf::Transform SceneNode::getWorldTransform() const
 
 void SceneNode::onCommand(const Command& command, sf::Time dt)
 {
-	if(command._category == getCategory())
+	if (command._category == getCategory())
 	{
 		command._action(*this, dt);
 	}
@@ -70,15 +71,45 @@ Category SceneNode::getCategory() const
 	return Category::Scene;
 }
 
-void SceneNode::updateCurrent(sf::Time dt)
+sf::FloatRect SceneNode::getBoundingRect() const
 {
+	return sf::FloatRect{};
 }
 
-void SceneNode::updateChildren(sf::Time dt) const
+bool SceneNode::isMarkedForRemoval() const
+{
+	return isDestroyed();
+}
+
+bool SceneNode::isDestroyed() const
+{
+	return false;
+}
+
+void SceneNode::drawBoundingRect(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	auto rect = getBoundingRect();
+
+	sf::RectangleShape shape;
+	shape.setPosition(sf::Vector2f{rect.left, rect.top});
+	shape.setSize(sf::Vector2f{rect.width, rect.height});
+	shape.setFillColor(sf::Color::Transparent);
+	shape.setOutlineColor(sf::Color::Green);
+	shape.setOutlineThickness(1.f);
+
+	target.draw(shape);
+}
+
+void SceneNode::updateCurrent(sf::Time dt, CommandQueue& commandQueue)
+{
+	// do nothing
+}
+
+void SceneNode::updateChildren(sf::Time dt, CommandQueue& commandQueue) const
 {
 	for (const auto& child : _children)
 	{
-		child->update(dt);
+		child->update(dt, commandQueue);
 	}
 }
 
@@ -92,6 +123,7 @@ void SceneNode::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void SceneNode::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	// do nothing
 }
 
 void SceneNode::drawChildren(sf::RenderTarget& target, sf::RenderStates states) const

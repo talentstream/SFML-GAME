@@ -91,11 +91,14 @@ enum class TextureID
 {
 	Eagle,
 	Raptor,
+	Avenger,
 	Desert,
 	TitleScreen,
 	ButtonNormal,
 	ButtonSelected,
 	ButtonPressed,
+	Bullet,
+	Missile,
 };
 
 using TextureHolder = ResourceHolder<sf::Texture, TextureID>;

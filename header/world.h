@@ -5,9 +5,9 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 
-#include "aircraft.h"
+#include "sceneNode/aircraft.h"
 #include "common/resourceHolder.h"
-#include "sceneNode.h"
+#include "common/sceneNode.h"
 #include "common/commandQueue.h"
 
 class World :
@@ -25,15 +25,48 @@ public:
 private:
 	void loadTextures();
 
-	void buildScene();
+	
+
 	void adaptPlayerPosition() const;
+
 	void adaptPlayerVelocity();
+
+	void buildScene();	
+
+	void addEnemies();
+
+	void addEnemy(Aircraft::Type type, float relX, float relY);
+
+	void spawnEnemies();
+
+	void destroyEntitiesOutsideView();
+
+	void guideMissiles();
+
+	sf::FloatRect getViewBounds() const;
+
+	sf::FloatRect getBattlefieldBounds() const;
+
 
 	enum class Layer : std::size_t
 	{
 		Background,
 		Air,
 		Count
+	};
+
+	struct SpawnPoint
+	{
+		SpawnPoint(Aircraft::Type type, float x, float y)
+			: type(type)
+			, x(x)
+			, y(y)
+		{
+		}
+
+		Aircraft::Type type;
+		float x;
+		float y;
 	};
 
 	sf::RenderWindow& _window;
@@ -48,4 +81,7 @@ private:
 	sf::Vector2f _spawnPosition;
 	float _scrollSpeed;
 	Aircraft* _playerAircraft;
+
+	std::vector<SpawnPoint> _enemySpawnPoints;
+	std::vector<Aircraft*> _activeEnemies;
 };

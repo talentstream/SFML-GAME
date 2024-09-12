@@ -1,6 +1,8 @@
 #include "world.h"
 
-#include "spriteNode.h"
+#include "sceneNode/spriteNode.h"
+
+#include <ranges>
 
 World::World(sf::RenderWindow& window) :
 	_window{window},
@@ -10,7 +12,7 @@ World::World(sf::RenderWindow& window) :
 	_sceneLayers{},
 	_worldBounds{0.f, 0.f, _worldView.getSize().x, 2000.f},
 	_spawnPosition{_worldView.getSize().x / 2.f, _worldBounds.height - _worldView.getSize().y / 2.f},
-	_scrollSpeed{-50.f},
+	_scrollSpeed{-50.f}, 
 	_playerAircraft{nullptr}
 {
 	loadTextures();
@@ -30,7 +32,7 @@ void World::update(sf::Time dt)
 	}
 	adaptPlayerVelocity();
 
-	_sceneGraph.update(dt);
+	_sceneGraph.update(dt, TODO);
 }
 
 void World::draw()
@@ -83,6 +85,42 @@ void World::buildScene()
 	auto rightEscort = std::make_unique<Aircraft>(Aircraft::Type::Raptor, _textureHolder);
 	rightEscort->setPosition(80.f, 50.f);
 	_playerAircraft->attachChild(std::move(rightEscort));
+}
+
+void World::addEnemies()
+{
+	addEnemy(Aircraft::Type::Raptor, 0.f, 500.f);
+	addEnemy(Aircraft::Type::Raptor, 0.f, 1000.f);
+	addEnemy(Aircraft::Type::Raptor, +100.f, 1100.f);
+	addEnemy(Aircraft::Type::Raptor, -100.f, 1100.f);
+	addEnemy(Aircraft::Type::Avenger, -70.f, 1400.f);
+	addEnemy(Aircraft::Type::Avenger, -70.f, 1600.f);
+	addEnemy(Aircraft::Type::Avenger, 70.f, 1400.f);
+	addEnemy(Aircraft::Type::Avenger, 70.f, 1600.f);
+
+	namespace ranges = std::ranges;
+	ranges::sort(_enemySpawnPoints, ranges::less{}, &SpawnPoint::y);
+
+}
+
+void World::addEnemy(Aircraft::Type type, float relX, float relY)
+{
+}
+
+void World::spawnEnemies()
+{
+	while(_enemySpawnPoints.empty() == false &&
+		_enemySpawnPoints.back().y > getBattlefieldBounds().top)
+	{
+		auto spawnPoint = _enemySpawnPoints.back();
+
+		auto enemy = std::make_unique<Aircraft>(Aircraft::Type::Raptor, _textureHolder);
+		enemy->setPosition(spawnPoint.x, spawnPoint.y);
+		enemy->setRotation(180.f);
+		_sceneLayers[Layer::Air]->attachChild(std::move(enemy));
+
+		_enemySpawnPoints.pop_back();
+	}
 }
 
 void World::adaptPlayerPosition() const

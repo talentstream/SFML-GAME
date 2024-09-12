@@ -21,19 +21,19 @@
     <ClCompile Include="source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\entity.cpp">
+    <ClCompile Include="source\sceneNode\entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\aircraft.cpp">
+    <ClCompile Include="source\sceneNode\aircraft.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\sceneNode.cpp">
+    <ClCompile Include="source\common\sceneNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\world.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\spriteNode.cpp">
+    <ClCompile Include="source\sceneNode\spriteNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\common\commandQueue.cpp">
@@ -84,6 +84,15 @@
     <ClCompile Include="source\state\settingsState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\common\dataTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\sceneNode\textNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\sceneNode\projectile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\common\application.h">
@@ -92,19 +101,19 @@
     <ClInclude Include="header\common\resourceHolder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\entity.h">
+    <ClInclude Include="header\sceneNode\entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\aircraft.h">
+    <ClInclude Include="header\sceneNode\aircraft.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\sceneNode.h">
+    <ClInclude Include="header\common\sceneNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\world.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\spriteNode.h">
+    <ClInclude Include="header\sceneNode\spriteNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\common\command.h">
@@ -156,6 +165,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\state\settingsState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\common\dataTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\sceneNode\textNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\sceneNode\projectile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

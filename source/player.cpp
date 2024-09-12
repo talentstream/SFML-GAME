@@ -1,12 +1,15 @@
 #include "player.h"
-#include "aircraft.h"
+#include "sceneNode/aircraft.h"
 
 Player::Player()
+	: _currentMissionStatus{MissionStatus::Running}
 {
 	_keyBinding[sf::Keyboard::Left] = Action::MoveLeft;
 	_keyBinding[sf::Keyboard::Right] = Action::MoveRight;
 	_keyBinding[sf::Keyboard::Up] = Action::MoveUp;
 	_keyBinding[sf::Keyboard::Down] = Action::MoveDown;
+	_keyBinding[sf::Keyboard::Space] = Action::Fire;
+	_keyBinding[sf::Keyboard::M] = Action::LaunchMissile;
 
 	initializeActions();
 
@@ -20,7 +23,6 @@ void Player::handleEvent(const sf::Event& event, CommandQueue& commandQueue)
 {
 	if (event.type == sf::Event::KeyPressed)
 	{
-
 		auto found = _keyBinding.find(event.key.code);
 		if (found != _keyBinding.end() && isRealtimeAction(found->second) == false)
 		{
@@ -63,6 +65,16 @@ sf::Keyboard::Key Player::getAssignedKey(Action action) const
 	return sf::Keyboard::Unknown;
 }
 
+void Player::setMissionStatus(MissionStatus status)
+{
+	_currentMissionStatus = status;
+}
+
+Player::MissionStatus Player::getMissionStatus() const
+{
+	return _currentMissionStatus;
+}
+
 void Player::initializeActions()
 {
 	constexpr float playerSpeed = 200.f;
@@ -71,6 +83,14 @@ void Player::initializeActions()
 	_actionBinding[Action::MoveRight]._action = derivedAction<Aircraft>(AircraftMover(playerSpeed, 0.f));
 	_actionBinding[Action::MoveUp]._action = derivedAction<Aircraft>(AircraftMover(0.f, -playerSpeed));
 	_actionBinding[Action::MoveDown]._action = derivedAction<Aircraft>(AircraftMover(0.f, playerSpeed));
+	_actionBinding[Action::Fire]._action = derivedAction<Aircraft>([](Aircraft& aircraft, sf::Time)
+	{
+		aircraft.fire();
+	});
+	_actionBinding[Action::LaunchMissile]._action = derivedAction<Aircraft>([](Aircraft& aircraft, sf::Time)
+	{
+		aircraft.launchMissile();
+	});
 }
 
 bool Player::isRealtimeAction(Action action)
@@ -81,6 +101,7 @@ bool Player::isRealtimeAction(Action action)
 	case Action::MoveRight:
 	case Action::MoveDown:
 	case Action::MoveUp:
+	case Action::Fire:
 		return true;
 
 	default:

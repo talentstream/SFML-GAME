@@ -132,6 +132,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\sceneNode\projectile.cpp" />
+    <ClCompile Include="source\common\dataTable.cpp" />
     <ClCompile Include="source\state\settingsState.cpp" />
     <ClCompile Include="source\gui\button.cpp" />
     <ClCompile Include="source\gui\label.cpp" />
@@ -144,33 +146,35 @@
     <ClCompile Include="source\state\gameState.cpp" />
     <ClCompile Include="source\player.cpp" />
     <ClCompile Include="source\common\commandQueue.cpp" />
-    <ClCompile Include="source\sceneNode.cpp" />
-    <ClCompile Include="source\aircraft.cpp" />
-    <ClCompile Include="source\entity.cpp" />
+    <ClCompile Include="source\common\sceneNode.cpp" />
+    <ClCompile Include="source\sceneNode\aircraft.cpp" />
+    <ClCompile Include="source\sceneNode\entity.cpp" />
     <ClCompile Include="source\common\application.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\common\utility.cpp" />
     <ClCompile Include="source\world.cpp" />
-    <ClCompile Include="source\spriteNode.cpp" />
+    <ClCompile Include="source\sceneNode\spriteNode.cpp" />
     <ClCompile Include="source\common\state.cpp" />
     <ClCompile Include="source\common\stateStack.cpp" />
     <ClCompile Include="source\state\titleState.cpp" />
+    <ClCompile Include="source\sceneNode\textNode.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="header\common\dataTable.h" />
     <ClInclude Include="header\gui\button.h" />
     <ClInclude Include="header\gui\container.h" />
     <ClInclude Include="header\common\component.h" />
     <ClInclude Include="header\state\gameState.h" />
     <ClInclude Include="header\common\commandQueue.h" />
-    <ClInclude Include="header\aircraft.h" />
+    <ClInclude Include="header\sceneNode\aircraft.h" />
     <ClInclude Include="header\common\command.h" />
-    <ClInclude Include="header\entity.h" />
+    <ClInclude Include="header\sceneNode\entity.h" />
     <ClInclude Include="header\common\application.h" />
     <ClInclude Include="header\common\resourceHolder.h" />
-    <ClInclude Include="header\sceneNode.h" />
+    <ClInclude Include="header\common\sceneNode.h" />
     <ClInclude Include="header\common\utility.h" />
     <ClInclude Include="header\world.h" />
-    <ClInclude Include="header\spriteNode.h" />
+    <ClInclude Include="header\sceneNode\spriteNode.h" />
     <ClInclude Include="header\player.h" />
     <ClInclude Include="header\common\state.h" />
     <ClInclude Include="header\common\stateStack.h" />
@@ -181,6 +185,8 @@
     <ClInclude Include="header\common\parellelTask.h" />
     <ClInclude Include="header\gui\label.h" />
     <ClInclude Include="header\state\settingsState.h" />
+    <ClInclude Include="header\sceneNode\textNode.h" />
+    <ClInclude Include="header\sceneNode\projectile.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resource\ButtonNormal.png" />
