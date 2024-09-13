@@ -99,6 +99,10 @@ enum class TextureID
 	ButtonPressed,
 	Bullet,
 	Missile,
+	HealthRefill,
+	MissileRefill,
+	FireSpread,
+	FireRate
 };
 
 using TextureHolder = ResourceHolder<sf::Texture, TextureID>;

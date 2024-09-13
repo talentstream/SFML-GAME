@@ -11,14 +11,13 @@
 class CommandQueue;
 
 class SceneNode
-	:public sf::Transformable,
-	 public sf::Drawable,
-	 private sf::NonCopyable
+	: public sf::Transformable,
+	  public sf::Drawable,
+	  sf::NonCopyable
 {
 public:
 	using NodePtr = std::unique_ptr<SceneNode>;
 
-public:
 	explicit SceneNode(Category category = Category::None);
 
 	void attachChild(NodePtr child);
@@ -41,12 +40,14 @@ public:
 
 	virtual bool isDestroyed() const;
 
+	static float distance(const SceneNode& lhs, const SceneNode& rhs);
+
 private:
 	virtual void updateCurrent(sf::Time dt, CommandQueue& commandQueue);
 
 	void updateChildren(sf::Time dt, CommandQueue& commandQueue) const;
 
-	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
 	virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
 
@@ -54,7 +55,6 @@ private:
 
 	void drawBoundingRect(sf::RenderTarget& target, sf::RenderStates states) const;
 
-private:
 	std::vector<NodePtr> _children;
 	SceneNode* _parent;
 	Category _defaultCategory;

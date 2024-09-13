@@ -12,7 +12,7 @@ const sf::Time Application::TimePerFrame = sf::seconds(1.f / 60.f);
 
 Application::Application()
 	: _window{sf::VideoMode(640u, 480u), "SFML GAME", sf::Style::Close},
-	  _world{_window},
+	  _world{_window,_fontHolder},
 	  _player{},
 	  _textureHolder{},
 	  _fontHolder{},

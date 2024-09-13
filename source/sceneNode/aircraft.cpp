@@ -239,7 +239,7 @@ void Aircraft::createProjectile(SceneNode& node, Projectile::Type type, float xO
 	sf::Vector2f offset{xOffset * _sprite.getGlobalBounds().width, yOffset * _sprite.getGlobalBounds().height};
 	sf::Vector2f velocity{0, projectile->getMaxSpeed()};
 
-	constexpr float sign = isAllied() ? -1.f : 1.f;
+	float sign = isAllied() ? -1.f : 1.f;
 	projectile->setPosition(getWorldPosition() + offset * sign);
 	projectile->setVelocity(velocity * sign);
 	node.attachChild(std::move(projectile));
@@ -249,7 +249,7 @@ void Aircraft::createPickup(SceneNode& node, const TextureHolder& textureHolder)
 {
 	auto type = static_cast<Pickup::Type>(randomInt(std::to_underlying(Pickup::Type::Count)));
 
-	auto pickup = std::make_unique<Category::Pickup>(type, textureHolder);
+	auto pickup = std::make_unique<Pickup>(type, textureHolder);
 	pickup->setPosition(getWorldPosition());
 	pickup->setVelocity(0.f, 1.f);
 	node.attachChild(std::move(pickup));

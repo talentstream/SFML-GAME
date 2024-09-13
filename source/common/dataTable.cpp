@@ -48,3 +48,20 @@ std::unordered_map<Projectile::Type, ProjectileData> initialProjectileData()
 
 	return data;
 }
+
+std::unordered_map<Pickup::Type, PickupData> initialPickupData()
+{
+	std::unordered_map<Pickup::Type, PickupData> data;
+
+	using enum Pickup::Type;
+	data[HealthRefill].textureID = TextureID::HealthRefill;
+	data[HealthRefill].action = [] (Aircraft& a) { a.repair(25); };
+
+	data[MissileRefill].textureID = TextureID::MissileRefill;
+	data[MissileRefill].action = [] (Aircraft& a) { a.collectMissiles(3); };
+
+	data[FireSpread].textureID = TextureID::FireSpread;
+	data[FireSpread].action = [] (Aircraft& a) { a.increaseFireRate(); };
+
+	return data;
+}

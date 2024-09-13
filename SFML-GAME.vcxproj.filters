@@ -93,6 +93,9 @@
     <ClCompile Include="source\sceneNode\projectile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\sceneNode\pickup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\common\application.h">
@@ -174,6 +177,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\sceneNode\projectile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\sceneNode\pickup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

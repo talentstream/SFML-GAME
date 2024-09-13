@@ -132,6 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\sceneNode\pickup.cpp" />
     <ClCompile Include="source\sceneNode\projectile.cpp" />
     <ClCompile Include="source\common\dataTable.cpp" />
     <ClCompile Include="source\state\settingsState.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="header\state\settingsState.h" />
     <ClInclude Include="header\sceneNode\textNode.h" />
     <ClInclude Include="header\sceneNode\projectile.h" />
+    <ClInclude Include="header\sceneNode\pickup.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resource\ButtonNormal.png" />

@@ -10,11 +10,10 @@
 #include "common/sceneNode.h"
 #include "common/commandQueue.h"
 
-class World :
-	private sf::NonCopyable
+class World : private sf::NonCopyable
 {
 public:
-	explicit World(sf::RenderWindow& window);
+	explicit World(sf::RenderWindow& window, FontHolder& fontHolder);
 
 	void update(sf::Time dt);
 
@@ -72,6 +71,7 @@ private:
 	sf::RenderWindow& _window;
 	sf::View _worldView;
 	TextureHolder _textureHolder;
+	FontHolder& _fontHolder;
 
 	SceneNode _sceneGraph;
 	std::unordered_map<Layer, SceneNode*> _sceneLayers;

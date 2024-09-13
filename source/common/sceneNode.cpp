@@ -2,6 +2,8 @@
 
 #include <cassert>
 
+#include "common/utility.h"
+
 SceneNode::SceneNode(Category category) :
 	_children{},
 	_parent{nullptr},
@@ -68,7 +70,7 @@ void SceneNode::onCommand(const Command& command, sf::Time dt)
 
 Category SceneNode::getCategory() const
 {
-	return Category::Scene;
+	return _defaultCategory;
 }
 
 sf::FloatRect SceneNode::getBoundingRect() const
@@ -84,6 +86,11 @@ bool SceneNode::isMarkedForRemoval() const
 bool SceneNode::isDestroyed() const
 {
 	return false;
+}
+
+float SceneNode::distance(const SceneNode& lhs, const SceneNode& rhs)
+{
+	return length(lhs.getWorldPosition() - rhs.getWorldPosition());
 }
 
 void SceneNode::drawBoundingRect(sf::RenderTarget& target, sf::RenderStates states) const

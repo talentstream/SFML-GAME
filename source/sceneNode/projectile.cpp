@@ -10,9 +10,9 @@ namespace
 }
 
 Projectile::Projectile(Type type, const TextureHolder& textureHolder) :
-Entity{1},
-_type{type},
-_sprite{textureHolder.get(Table.at(type).textureID)}
+	Entity{1},
+	_type{type},
+	_sprite{textureHolder.get(Table.at(type).textureID)}
 {
 	centerOrigin(_sprite);
 }
@@ -30,7 +30,7 @@ bool Projectile::isGuided() const
 
 Category Projectile::getCategory() const
 {
-	if(_type == Type::EnemyBullet)
+	if (_type == Type::EnemyBullet)
 	{
 		return Category::EnemyProjectile;
 	}
@@ -57,9 +57,9 @@ int Projectile::getDamage() const
 
 void Projectile::updateCurrent(sf::Time dt, CommandQueue& commandQueue)
 {
-	if(isGuided())
+	if (isGuided())
 	{
-		constexpr auto approachRate{ 200.f };
+		constexpr auto approachRate{200.f};
 
 		auto newVelocity = unitVector(approachRate * dt.asSeconds() * _targetDirection + getVelocity());
 		newVelocity *= getMaxSpeed();

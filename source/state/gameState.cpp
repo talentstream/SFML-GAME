@@ -2,7 +2,7 @@
 
 GameState::GameState(StateStack& stack, Context context) :
 	State{stack, context},
-	_world{*context._window},
+	_world{*context._window,*context._fontHolder},
 	_player{*context._player}
 {
 }
