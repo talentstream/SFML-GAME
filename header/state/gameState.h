@@ -1,6 +1,6 @@
 #pragma once
 
-#include "world.h"
+#include "common/world.h"
 #include "common/state.h"
 
 class GameState final : public State

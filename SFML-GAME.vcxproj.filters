@@ -30,7 +30,7 @@
     <ClCompile Include="source\common\sceneNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\world.cpp">
+    <ClCompile Include="source\common\world.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\sceneNode\spriteNode.cpp">
@@ -39,7 +39,7 @@
     <ClCompile Include="source\common\commandQueue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\player.cpp">
+    <ClCompile Include="source\common\player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\common\state.cpp">
@@ -96,6 +96,9 @@
     <ClCompile Include="source\sceneNode\pickup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\state\gameOverState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\common\application.h">
@@ -113,7 +116,7 @@
     <ClInclude Include="header\common\sceneNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\world.h">
+    <ClInclude Include="header\common\world.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\sceneNode\spriteNode.h">
@@ -125,7 +128,7 @@
     <ClInclude Include="header\common\commandQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\player.h">
+    <ClInclude Include="header\common\player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\common\state.h">
@@ -182,6 +185,9 @@
     <ClInclude Include="header\sceneNode\pickup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="header\state\gameOverState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resource\Eagle.png">
@@ -203,6 +209,27 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="resource\ButtonSelected.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resource\Avenger.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resource\Bullet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resource\FireRate.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resource\FireSpread.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resource\HealthRefill.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resource\MissileRefill.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resource\Missile.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

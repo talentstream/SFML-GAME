@@ -132,6 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\state\gameOverState.cpp" />
     <ClCompile Include="source\sceneNode\pickup.cpp" />
     <ClCompile Include="source\sceneNode\projectile.cpp" />
     <ClCompile Include="source\common\dataTable.cpp" />
@@ -145,7 +146,7 @@
     <ClCompile Include="source\state\pauseState.cpp" />
     <ClCompile Include="source\state\menuState.cpp" />
     <ClCompile Include="source\state\gameState.cpp" />
-    <ClCompile Include="source\player.cpp" />
+    <ClCompile Include="source\common\player.cpp" />
     <ClCompile Include="source\common\commandQueue.cpp" />
     <ClCompile Include="source\common\sceneNode.cpp" />
     <ClCompile Include="source\sceneNode\aircraft.cpp" />
@@ -153,7 +154,7 @@
     <ClCompile Include="source\common\application.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\common\utility.cpp" />
-    <ClCompile Include="source\world.cpp" />
+    <ClCompile Include="source\common\world.cpp" />
     <ClCompile Include="source\sceneNode\spriteNode.cpp" />
     <ClCompile Include="source\common\state.cpp" />
     <ClCompile Include="source\common\stateStack.cpp" />
@@ -161,6 +162,7 @@
     <ClCompile Include="source\sceneNode\textNode.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="header\state\gameOverState.h" />
     <ClInclude Include="header\common\dataTable.h" />
     <ClInclude Include="header\gui\button.h" />
     <ClInclude Include="header\gui\container.h" />
@@ -174,9 +176,9 @@
     <ClInclude Include="header\common\resourceHolder.h" />
     <ClInclude Include="header\common\sceneNode.h" />
     <ClInclude Include="header\common\utility.h" />
-    <ClInclude Include="header\world.h" />
+    <ClInclude Include="header\common\world.h" />
     <ClInclude Include="header\sceneNode\spriteNode.h" />
-    <ClInclude Include="header\player.h" />
+    <ClInclude Include="header\common\player.h" />
     <ClInclude Include="header\common\state.h" />
     <ClInclude Include="header\common\stateStack.h" />
     <ClInclude Include="header\state\titleState.h" />
@@ -191,11 +193,18 @@
     <ClInclude Include="header\sceneNode\pickup.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="resource\Avenger.png" />
+    <Image Include="resource\Bullet.png" />
     <Image Include="resource\ButtonNormal.png" />
     <Image Include="resource\ButtonPressed.png" />
     <Image Include="resource\ButtonSelected.png" />
     <Image Include="resource\Desert.png" />
     <Image Include="resource\Eagle.png" />
+    <Image Include="resource\FireRate.png" />
+    <Image Include="resource\FireSpread.png" />
+    <Image Include="resource\HealthRefill.png" />
+    <Image Include="resource\Missile.png" />
+    <Image Include="resource\MissileRefill.png" />
     <Image Include="resource\Raptor.png" />
     <Image Include="resource\TitleScreen.png" />
   </ItemGroup>

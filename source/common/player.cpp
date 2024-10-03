@@ -1,4 +1,4 @@
-#include "player.h"
+#include "common/player.h"
 #include "sceneNode/aircraft.h"
 
 Player::Player()

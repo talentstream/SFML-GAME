@@ -1,6 +1,6 @@
 #include "state/settingsState.h"
 
-#include "player.h"
+#include "common/player.h"
 
 SettingsState::SettingsState(StateStack& stack, Context context) :
 	State{stack, context},

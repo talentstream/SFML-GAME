@@ -27,11 +27,9 @@ private:
 	void registerState();
 
 private:
-	// static const float PlayerSpeed;
 	static const sf::Time TimePerFrame;
 
 	sf::RenderWindow _window;
-	World _world;
 	Player _player;
 	TextureHolder _textureHolder;
 	FontHolder _fontHolder;

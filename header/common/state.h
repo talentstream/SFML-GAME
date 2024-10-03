@@ -18,7 +18,8 @@ enum class StateID
 	Game,
 	Loading,
 	Pause,
-	Settings
+	Settings,
+	GameOver
 };
 
 class State

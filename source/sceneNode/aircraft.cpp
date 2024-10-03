@@ -69,6 +69,7 @@ void Aircraft::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) co
 
 void Aircraft::updateMovementPattern(sf::Time dt)
 {
+
 	const auto& directions = Table.at(_type).directions;
 
 	if (directions.empty() == false)
@@ -84,15 +85,12 @@ void Aircraft::updateMovementPattern(sf::Time dt)
 
 Category Aircraft::getCategory() const
 {
-	switch (_type)
+	if (isAllied())
 	{
-	case Type::Eagle:
 		return Category::PlayerAircraft;
-
-	case Type::Raptor:
-		return Category::EnemyAircraft;
-
-	default:
+	}
+	else
+	{
 		return Category::EnemyAircraft;
 	}
 }
@@ -217,14 +215,14 @@ void Aircraft::createBullets(SceneNode& node, const TextureHolder& textureHolder
 		break;
 
 	case 2:
-		createProjectile(node, type, -0.33f, 0.5f, textureHolder);
-		createProjectile(node, type, +0.33f, 0.5f, textureHolder);
+		createProjectile(node, type, -0.33f, 0.33f, textureHolder);
+		createProjectile(node, type, +0.33f, 0.33f, textureHolder);
 		break;
 
 	case 3:
-		createProjectile(node, type, -0.5f, 0.5f, textureHolder);
+		createProjectile(node, type, -0.5f, 0.33f, textureHolder);
 		createProjectile(node, type, 0.f, 0.5f, textureHolder);
-		createProjectile(node, type, +0.5f, 0.5f, textureHolder);
+		createProjectile(node, type, +0.5f, 0.33f, textureHolder);
 		break;
 
 	default:

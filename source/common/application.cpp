@@ -6,13 +6,13 @@
 #include "state/pauseState.h"
 #include "state/menuState.h"
 #include "state/settingsState.h"
+#include "state/gameOverState.h"
 
 // constexpr float Application::PlayerSpeed = 100.f;
 const sf::Time Application::TimePerFrame = sf::seconds(1.f / 60.f);
 
 Application::Application()
 	: _window{sf::VideoMode(640u, 480u), "SFML GAME", sf::Style::Close},
-	  _world{_window,_fontHolder},
 	  _player{},
 	  _textureHolder{},
 	  _fontHolder{},
@@ -23,6 +23,7 @@ Application::Application()
 	_window.setKeyRepeatEnabled(false);
 
 	_fontHolder.load(FontID::Main,"resource/Sansation.ttf");
+
 	_textureHolder.load(TextureID::TitleScreen, "resource/TitleScreen.png");
 	_textureHolder.load(TextureID::ButtonNormal, "resource/ButtonNormal.png");
 	_textureHolder.load(TextureID::ButtonSelected, "resource/ButtonSelected.png");
@@ -43,8 +44,6 @@ void Application::run()
 
 	while (_window.isOpen())
 	{
-		processInput();
-
 		auto dt = clock.restart();
 		timeSinceLastUpdate += dt;
 
@@ -115,4 +114,5 @@ void Application::registerState()
 	_stateStack.registerState<GameState>(StateID::Game);
 	_stateStack.registerState<PauseState>(StateID::Pause);
 	_stateStack.registerState<SettingsState>(StateID::Settings);
+	_stateStack.registerState<GameOverState>(StateID::GameOver);
 }

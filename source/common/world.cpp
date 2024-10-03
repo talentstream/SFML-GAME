@@ -1,7 +1,6 @@
-#include "world.h"
+#include "common/world.h"
 
 #include "sceneNode/spriteNode.h"
-#include "common/utility.h"
 
 #include <ranges>
 #include <variant>
@@ -94,13 +93,15 @@ void World::buildScene()
 	_playerAircraft->setVelocity(40.f, _scrollSpeed);
 	_sceneLayers[Layer::Air]->attachChild(std::move(leader));
 
-	auto leftEscort = std::make_unique<Aircraft>(Aircraft::Type::Raptor, _textureHolder, _fontHolder);
-	leftEscort->setPosition(-80.f, 50.f);
-	_playerAircraft->attachChild(std::move(leftEscort));
+	// auto leftEscort = std::make_unique<Aircraft>(Aircraft::Type::Raptor, _textureHolder, _fontHolder);
+	// leftEscort->setPosition(-80.f, 50.f);
+	// _playerAircraft->attachChild(std::move(leftEscort));
+	//
+	// auto rightEscort = std::make_unique<Aircraft>(Aircraft::Type::Raptor, _textureHolder, _fontHolder);
+	// rightEscort->setPosition(80.f, 50.f);
+	// _playerAircraft->attachChild(std::move(rightEscort));
 
-	auto rightEscort = std::make_unique<Aircraft>(Aircraft::Type::Raptor, _textureHolder, _fontHolder);
-	rightEscort->setPosition(80.f, 50.f);
-	_playerAircraft->attachChild(std::move(rightEscort));
+	addEnemies();
 }
 
 void World::addEnemies()
@@ -120,10 +121,13 @@ void World::addEnemies()
 
 void World::addEnemy(Aircraft::Type type, float relX, float relY)
 {
+	SpawnPoint spawn{ type,_spawnPosition.x + relX, _spawnPosition.y + relY };
+	_enemySpawnPoints.push_back(spawn);
 }
 
 void World::spawnEnemies()
 {
+
 	while (_enemySpawnPoints.empty() == false &&
 		_enemySpawnPoints.back().y > getBattlefieldBounds().top)
 	{
@@ -136,6 +140,7 @@ void World::spawnEnemies()
 
 		_enemySpawnPoints.pop_back();
 	}
+
 }
 
 void World::destroyEntitiesOutsideView()

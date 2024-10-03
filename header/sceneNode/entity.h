@@ -27,7 +27,7 @@ public:
 
 	int getHitpoints() const;
 
-	bool isDestroyed() const;
+	bool isDestroyed() const override;
 
 protected:
 	void updateCurrent(sf::Time dt, CommandQueue& commandQueue) override;
